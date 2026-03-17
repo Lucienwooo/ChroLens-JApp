@@ -401,6 +401,9 @@ class VideoListItem(QWidget):
         self.total_frames = 0
         self.fps = 0
         self.is_playing_inline = False
+        self.last_preview_time = 0
+        self.last_preview_frame = -1
+        self.preview_fps_limit = 0.033 # 約 30 FPS
         
         # 媒體播放器組件
         self.media_player = QMediaPlayer()
@@ -428,12 +431,33 @@ class VideoListItem(QWidget):
         left_layout.setSpacing(0)
         left_layout.setContentsMargins(0, 0, 0, 0)
         
+        # 增加主容器概念，讓每個項目有獨立背景與邊框
+        self.container = QFrame()
+        self.container.setObjectName("ItemContainer")
+        # 設定每個磁貼的理想高度（防止過度延展或壓縮）
+        self.container.setFixedHeight(230)
+        self.container.setStyleSheet("""
+            QFrame#ItemContainer {
+                background-color: #2C2C2E;
+                border: 1px solid #3A3A3C;
+                border-radius: 6px;
+            }
+            QFrame#ItemContainer:hover {
+                border: 1px solid #48484A;
+                background-color: #323234;
+            }
+        """)
+        
+        container_layout = QHBoxLayout(self.container)
+        container_layout.setContentsMargins(8, 8, 8, 8)
+        container_layout.setSpacing(10)
+
         # 顯示區域疊加（縮圖 與 播放器）
         self.display_stack = QStackedWidget()
         self.display_stack.setObjectName("VideoStack")
-        self.display_stack.setStyleSheet("QStackedWidget#VideoStack { background: black; border: none; padding: 0px; }")
+        self.display_stack.setStyleSheet("QStackedWidget#VideoStack { background: black; border-radius: 4px; }")
         # 移除固定大小，改為最小尺寸與伸縮策略
-        self.display_stack.setMinimumSize(320, 180) 
+        self.display_stack.setMinimumSize(280, 160) 
         self.display_stack.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         
         # 縮圖
@@ -496,8 +520,10 @@ class VideoListItem(QWidget):
         left_layout.addWidget(self.filename_label)
         
         # 右側：按鈕群組 (固定寬度，緊貼左側)
-        button_layout = QVBoxLayout()
-        button_layout.setSpacing(2) # 按鈕間微小間隙
+        self.button_container = QWidget()
+        self.button_container.setFixedWidth(60)
+        button_layout = QVBoxLayout(self.button_container)
+        button_layout.setSpacing(4) # 按鈕間微小間隙
         button_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
         button_layout.setContentsMargins(0, 0, 0, 0)
         
@@ -544,9 +570,10 @@ class VideoListItem(QWidget):
         button_layout.addWidget(self.vol_slider)
         button_layout.addStretch() # 讓按鈕靠上
         
-        main_layout.addLayout(left_layout, 1) # 左側自適應伸縮
-        main_layout.addLayout(button_layout)  # 右側固定
+        container_layout.addLayout(left_layout, 1) # 左側自適應伸縮
+        container_layout.addWidget(self.button_container)  # 右側固定寬度容器
         
+        main_layout.addWidget(self.container)
         self.setLayout(main_layout)
         
         # 連接播放器信號
@@ -632,6 +659,12 @@ class VideoListItem(QWidget):
                 return True
             
             elif event.type() == event.Type.Leave:
+                # 釋放預覽資源
+                if self.video_capture:
+                    self.video_capture.release()
+                    self.video_capture = None
+                self.last_preview_frame = -1
+                
                 self.load_thumbnail()
                 self.progress_bar.setValue(0)
                 return True
@@ -639,19 +672,32 @@ class VideoListItem(QWidget):
         return super().eventFilter(obj, event)
 
     def load_frame_at_progress(self, progress):
-        """載入指定進度的畫面"""
+        """載入指定進度的畫面 (優化版：持續性 Capture 與 節流)"""
         if self.total_frames == 0:
             return
         
-        try:
-            cap = cv2.VideoCapture(str(self.video_path))
-            target_frame = int(self.total_frames * progress)
-            cap.set(cv2.CAP_PROP_POS_FRAMES, target_frame)
+        # 節流：限制預覽更新頻率
+        current_time = time.time()
+        if current_time - self.last_preview_time < self.preview_fps_limit:
+            return
             
-            ret, frame = cap.read()
-            cap.release()
+        target_frame = int(self.total_frames * progress)
+        # 如果目標幀跟上次一樣，則跳過
+        if target_frame == self.last_preview_frame:
+            return
+
+        try:
+            # 持續性使用相同的 Capture 物件，避免重複開啟檔案的巨大開銷
+            if not self.video_capture:
+                self.video_capture = cv2.VideoCapture(str(self.video_path))
+            
+            self.video_capture.set(cv2.CAP_PROP_POS_FRAMES, target_frame)
+            ret, frame = self.video_capture.read()
             
             if ret:
+                self.last_preview_time = current_time
+                self.last_preview_frame = target_frame
+                
                 frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 h, w, ch = frame.shape
                 bytes_per_line = ch * w
@@ -888,10 +934,10 @@ class MainWindow(QMainWindow):
         title.setStyleSheet("font-size: 18px; font-weight: bold;")
         title_row.addWidget(title)
         
-        # 新增瀏覽器/連結搜尋按鈕
-        self.browser_btn = QPushButton(" 瀏覽器") # 前面加空格微調間距
-        self.browser_btn.setIcon(QIcon(os.path.join(os.path.dirname(__file__), "pic", "umi_粉紅色.ico"))) # 嘗試使用現有圖示，若無則只顯示文字
-        self.browser_btn.setFixedSize(80, 26)
+        # 新增番號搜尋按鈕
+        self.browser_btn = QPushButton(" 番號搜尋(Beta)") # 前面加空格微調間距
+        self.browser_btn.setIcon(QIcon(os.path.join(os.path.dirname(__file__), "pic", "umi_粉紅色.ico"))) 
+        self.browser_btn.setFixedSize(110, 26)
         # 設定按鈕樣式，使其突出
         self.browser_btn.setStyleSheet("""
             QPushButton {
@@ -1053,16 +1099,17 @@ class MainWindow(QMainWindow):
         right_layout.setSpacing(4)
         right_layout.setContentsMargins(0, 0, 0, 0)
         
-        # list_header = QHBoxLayout()
-        # self.list_title = QLabel("影片列表")
-        # self.list_title.setStyleSheet("font-size: 11px; font-weight: 600;")
+        list_header = QHBoxLayout()
+        list_header.setContentsMargins(8, 4, 8, 4)
+        self.list_title = QLabel("影片列表與預覽")
+        self.list_title.setStyleSheet("font-size: 13px; font-weight: bold; color: #007AFF;")
         
-        # self.list_hint = QLabel("滑鼠懸停即時預覽 | 點擊播放按鈕開啟影片")
-        # self.list_hint.setStyleSheet("font-size: 9px;")
+        self.list_hint = QLabel("懸停預覽 | 點擊播放 (兩欄式)")
+        self.list_hint.setStyleSheet("font-size: 10px; color: #8E8E93;")
         
-        # list_header.addWidget(self.list_title)
-        # list_header.addStretch()
-        # list_header.addWidget(self.list_hint)
+        list_header.addWidget(self.list_title)
+        list_header.addStretch()
+        list_header.addWidget(self.list_hint)
         
         # 影片列表（網格佈局）
         scroll_area = QScrollArea()
@@ -1072,13 +1119,13 @@ class MainWindow(QMainWindow):
         self.video_grid_widget = QWidget()
         self.video_grid_widget.setObjectName("VideoGrid")
         self.video_grid_layout = QGridLayout()
-        self.video_grid_layout.setSpacing(0)
-        self.video_grid_layout.setContentsMargins(0, 0, 0, 0)
+        self.video_grid_layout.setSpacing(10) # 顯著增加網格間距，避免擠壓
+        self.video_grid_layout.setContentsMargins(10, 10, 10, 10)
         self.video_grid_widget.setLayout(self.video_grid_layout)
         
         scroll_area.setWidget(self.video_grid_widget)
         
-        # right_layout.addLayout(list_header)
+        right_layout.addLayout(list_header)
         right_layout.addWidget(scroll_area)
         self.right_panel.setLayout(right_layout)
         
@@ -1387,6 +1434,7 @@ class MainWindow(QMainWindow):
         
         if MultiPlayerWindow:
             self.player_window = MultiPlayerWindow(files, self)
+            self.player_window.setWindowFlags(self.player_window.windowFlags() | Qt.WindowType.WindowMinMaxButtonsHint)
             self.player_window.show()
             self.add_log(f"已開啟多視窗播放器，共 {len(files)} 個影片")
         else:
@@ -1396,6 +1444,7 @@ class MainWindow(QMainWindow):
         """顯示連結搜尋工具"""
         if LinkSearchDialog:
             dialog = LinkSearchDialog(self)
+            dialog.setWindowFlags(dialog.windowFlags() | Qt.WindowType.WindowMinMaxButtonsHint)
             dialog.exec()
         else:
             QMessageBox.warning(self, "錯誤", "無法載入連結搜尋模組!")
@@ -1404,9 +1453,12 @@ class MainWindow(QMainWindow):
         """顯示關於"""
         if VersionInfoDialog and self.version_manager:
             dialog = VersionInfoDialog(self, self.version_manager, VERSION, FULL_APP_NAME)
+            dialog.setWindowFlags(dialog.windowFlags() | Qt.WindowType.WindowMinMaxButtonsHint)
             dialog.exec()
         elif AboutDialog:
             dialog = AboutDialog(self)
+            if hasattr(dialog, 'setWindowFlags'):
+                dialog.setWindowFlags(dialog.windowFlags() | Qt.WindowType.WindowMinMaxButtonsHint)
             dialog.exec()
         else:
             QMessageBox.about(
