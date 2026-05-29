@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JApp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1.2.0">
+</head>
+<body>
+    <div class="background-shape shape1"></div>
+    <div class="background-shape shape2"></div>
+    <div class="background-shape shape3"></div>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar glass">
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item" data-target="homeSection">1. 首頁</a>
+                <a href="#" class="nav-item active" data-target="favoritesSection">2. 我的最愛</a>
+                <a href="#" class="nav-item" data-target="syncWatch">3. 同步觀看</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="#" id="toggleUiBtn" class="nav-item ui-item disabled-ui" style="margin-bottom: 10px;" title="純淨同步觀看模式 (僅在同步觀看分頁可用)">
+                    <span class="ui-icon">🖥️</span>
+                    <span class="ui-text">UI 切換</span>
+                </a>
+                <a href="#" class="nav-item settings-item" data-target="settings">
+                    <span class="settings-icon">⚙️</span>
+                    <span class="settings-text">設定</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            
+            <!-- Section 1: 首頁 -->
+            <section id="homeSection" class="content-section glass hidden-section">
+                <header>
+                    <!-- Toolbar Row 1: Reload + Date Filters -->
+                    <div class="home-toolbar" style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 5px;">
+                        <button id="loadHomeBtn" class="primary-btn" style="background:#0ea5e9; color:#fff; padding: 0.5rem 0.9rem;" title="重新載入最新影片">🔄 重載</button>
+
+                        <div style="display: flex; gap: 6px; margin-left: auto; align-items: center; flex-wrap: wrap;">
+                            <span style="color: #94a3b8; font-size: 0.82rem; font-weight: 600; white-space: nowrap;">📅 篩選日期:</span>
+                            <select id="homeYearFilter" class="glass-select" style="min-width: 90px; padding: 0.38rem 1.4rem 0.38rem 0.55rem; font-size: 0.82rem; border-radius: 8px;">
+                                <option value="">所有年份</option>
+                            </select>
+                            <select id="homeMonthFilter" class="glass-select" style="min-width: 78px; padding: 0.38rem 1.4rem 0.38rem 0.55rem; font-size: 0.82rem; border-radius: 8px;" disabled>
+                                <option value="">所有月份</option>
+                            </select>
+                            <select id="homeDayFilter" class="glass-select" style="min-width: 78px; padding: 0.38rem 1.4rem 0.38rem 0.55rem; font-size: 0.82rem; border-radius: 8px;" disabled>
+                                <option value="">所有日期</option>
+                            </select>
+                            <button id="confirmHomeDateBtn" class="primary-btn" style="padding: 0.38rem 0.6rem; border-radius: 8px; font-size: 0.82rem; background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.35); color: #4ade80; cursor: pointer; transition: all 0.2s;" title="確認篩選日期">✅ 確認</button>
+                            <button id="clearHomeDateBtn" class="primary-btn" style="padding: 0.38rem 0.6rem; border-radius: 8px; font-size: 0.82rem; background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3); color: #f87171; cursor: pointer; transition: all 0.2s;" title="清除篩選">✕</button>
+                        </div>
+                    </div>
+
+                    <!-- Toolbar Row 2: Search Input -->
+                    <div style="display: flex; gap: 8px; margin-top: 10px; width: 100%;">
+                        <div style="flex: 1; position: relative; display: flex; align-items: center;">
+                            <span style="position: absolute; left: 12px; font-size: 1rem; color: #64748b; pointer-events: none;">🔍</span>
+                            <input type="text" id="homeSearchInput"
+                                placeholder="搜尋番號或女優名稱（按 Enter 或點搜尋）..."
+                                style="width: 100%; padding: 0.6rem 1rem 0.6rem 2.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: white; border-radius: 10px; font-size: 0.9rem; outline: none; transition: border 0.2s;">
+                        </div>
+                        <button id="homeSearchBtn" class="primary-btn" style="padding: 0.6rem 1.4rem; border-radius: 10px; font-weight: 600; white-space: nowrap;">搜尋</button>
+                    </div>
+                </header>
+
+                <!-- Loading Indicator -->
+                <div id="homeLoadingText" style="display: none; text-align: center; padding: 3rem; color: #94a3b8; font-size: 0.95rem; letter-spacing: 0.05em;">
+                    <div class="loading-spinner" style="margin: 0 auto 12px;"></div>
+                    正在載入最新影片...
+                </div>
+
+                <!-- Video Grid -->
+                <main id="homeGrid" class="video-grid" style="margin-top: 14px;"></main>
+
+                <!-- Pagination -->
+                <div id="homePagination" style="margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 10px; padding-bottom: 1.5rem; flex-wrap: wrap;">
+                    <button id="prevPageBtn" class="primary-btn sm-btn" style="min-width: 80px;">◀ 上一頁</button>
+                    <span id="homePageInfo" style="color: #cbd5e1; font-weight: 600; font-size: 0.9rem; padding: 0.4rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px;">第 1 頁 / 共 1 頁</span>
+                    <button id="nextPageBtn" class="primary-btn sm-btn" style="min-width: 80px;">下一頁 ▶</button>
+                </div>
+            </section>
+
+            <!-- Section 2: 我的最愛 -->
+            <section id="favoritesSection" class="content-section glass">
+                <header>
+                    <div class="search-box" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 5px;">
+                        <input type="text" id="searchInput" placeholder="搜尋番號或女優名稱..." style="flex: 1; min-width: 200px;">
+                        <select id="actressFilter" class="glass-select" style="min-width: 150px;">
+                            <option value="">👤 所有女優</option>
+                        </select>
+                        <select id="typeFilter" class="glass-select" style="min-width: 120px;">
+                            <option value="">🏷️ 所有類型</option>
+                        </select>
+                    </div>
+                </header>
+
+                <div class="stats-bar">
+                    <span>總收藏: <strong id="totalCount">0</strong></span>
+                    <span>可播放: <strong id="linkCount">0</strong></span>
+                </div>
+
+                <main id="videoGrid" class="video-grid">
+                    <div class="loading">載入中...</div>
+                </main>
+            </section>
+
+            <!-- Section 3: 同步觀看 -->
+            <section id="syncWatch" class="content-section glass hidden-section p-0">
+                <div class="sync-layout">
+                    <div class="sync-header-toolbar" style="padding: 10px 15px; background: rgba(0,0,0,0.25); border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: space-between; gap: 15px; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                        <span style="font-weight: 800; font-size: 0.9rem; color: #fff; display: flex; align-items: center; gap: 6px;">📺 同步欄位設定:</span>
+                        <div class="grid-selector-group" style="display: flex; gap: 6px;">
+                            <button class="grid-sel-btn" data-slots="1">1</button>
+                            <button class="grid-sel-btn" data-slots="2">2</button>
+                            <button class="grid-sel-btn" data-slots="3">3</button>
+                            <button class="grid-sel-btn active" data-slots="4">4</button>
+                            <button class="grid-sel-btn" data-slots="5">5</button>
+                            <button class="grid-sel-btn" data-slots="6">6</button>
+                            <button class="grid-sel-btn" data-slots="7">7</button>
+                            <button class="grid-sel-btn" data-slots="8">8</button>
+                            <button class="grid-sel-btn" data-slots="9">9</button>
+                        </div>
+                        <span id="activePaneIndicator" style="font-size: 0.8rem; font-weight: 700; color: var(--accent); opacity: 0.9;">🎯 點選視窗可用快捷鍵控制</span>
+                    </div>
+                    
+                    <div id="syncGrid" class="sync-grid grid-2x2" style="padding: 10px; flex-grow: 1;">
+                        <!-- Slots are rendered dynamically by JavaScript based on choice -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings -->
+            <section id="settings" class="content-section glass hidden-section">
+                <header>
+                    <h1>⚙️ 系統設定</h1>
+                    <p>偏好設定與介面自訂</p>
+                </header>
+                
+                <div class="settings-container">
+                    <div class="setting-group">
+                        <h3>設定首頁</h3>
+                        <p class="setting-desc">設定並儲存應用程式「首頁」的預設載入網址。</p>
+                        <div class="setting-input-row">
+                            <input type="text" id="homeUrlInput" placeholder="例如: https://javxx.com/tw/all?type=uncensored-leaked&year=&actress=single&sort=added_date">
+                            <button id="saveHomeUrlBtn" class="primary-btn">儲存網址</button>
+                        </div>
+                        <p id="saveMsg" class="success-msg hidden">✅ 儲存成功！已更新首頁網址。</p>
+                    </div>
+
+                    <div class="setting-group" style="margin-top: 20px;">
+                        <h3>🔁 影片重播快捷鍵設定</h3>
+                        <p class="setting-desc">設定在「同步觀看」面板中設定起點與終點的快捷鍵。點選輸入框並按下鍵盤任意鍵即可設定。</p>
+                        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                            <div style="flex: 1; min-width: 180px;">
+                                <label style="display: block; color: #fff; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">🅰️ 設定起點快捷鍵：</label>
+                                <input type="text" id="hotkeyStartInput" readonly style="width: 100%; padding: 0.8rem 1.2rem; font-size: 1rem; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--accent); font-weight: 700; text-align: center; text-transform: uppercase; cursor: pointer;" value="Z">
+                            </div>
+                            <div style="flex: 1; min-width: 180px;">
+                                <label style="display: block; color: #fff; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">🅱️ 設定終點快捷鍵：</label>
+                                <input type="text" id="hotkeyEndInput" readonly style="width: 100%; padding: 0.8rem 1.2rem; font-size: 1rem; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--glass-border); border-radius: 8px; color: #f87171; font-weight: 700; text-align: center; text-transform: uppercase; cursor: pointer;" value="X">
+                            </div>
+                        </div>
+                        <p id="hotkeySaveMsg" class="success-msg hidden" style="margin-top: 15px;">✅ 快捷鍵已成功儲存並生效！</p>
+                    </div>
+
+                    <!-- JApp Auto Update Group -->
+                    <div class="setting-group" style="margin-top: 20px;">
+                        <h3>🚀 系統更新</h3>
+                        <p class="setting-desc">檢查新版本並自動安裝更新以享受最新功能與效能優化。</p>
+                        <div class="update-panel" style="display: flex; flex-direction: column; gap: 12px; background: rgba(255,255,255,0.03); padding: 18px; border-radius: 12px; border: 1px solid var(--glass-border);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                                <div style="display: flex; flex-direction: column; gap: 4px;">
+                                    <span style="font-weight: 600; color: #fff; font-size: 0.95rem;">系統狀態: <span style="color: #10b981; font-weight: bold;">已啟用</span><span id="currentVersionText" style="display: none;"></span></span>
+                                    <span id="updateStatusText" style="color: #94a3b8; font-size: 0.85rem;">尚未檢查更新</span>
+                                </div>
+                                <button id="checkUpdateBtn" class="primary-btn" style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);">檢查更新</button>
+                            </div>
+                            
+                            <!-- Update Info Area (Hidden initially) -->
+                            <div id="updateInfoArea" class="hidden" style="display: flex; flex-direction: column; gap: 8px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 12px; margin-top: 4px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                                    <span style="color: #4ade80; font-weight: bold; font-size: 0.95rem;">⭐ 發現新版本！<span id="newVersionText" style="display: none;"></span></span>
+                                    <button id="startUpdateBtn" class="primary-btn sm-btn" style="background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 8px; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);">立即安裝更新</button>
+                                </div>
+                                <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; font-size: 0.85rem; max-height: 120px; overflow-y: auto; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.05); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                                    <strong style="color: #fff; display: block; margin-bottom: 6px;">更新日誌:</strong>
+                                    <pre id="releaseNotesText" style="margin: 0; white-space: pre-wrap; font-family: inherit; font-size: 0.85rem; line-height: 1.4; color: #94a3b8;"></pre>
+                                </div>
+                            </div>
+                            
+                            <!-- Progress Bar (Hidden initially) -->
+                            <div id="updateProgressArea" class="hidden" style="display: flex; flex-direction: column; gap: 8px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 12px; margin-top: 4px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                    <span id="progressDetailText" style="color: #3b82f6; font-weight: 500;">正在下載更新...</span>
+                                    <span id="progressPercentText" style="color: #fff; font-weight: bold;">0%</span>
+                                </div>
+                                <div class="progress-bar-container" style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                                    <div id="updateProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #3b82f6, #8b5cf6, #d946ef); border-radius: 4px; transition: width 0.15s; box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Video Player Modal -->
+    <div id="playerModal" class="modal-overlay hidden">
+        <div class="modal-glass">
+            <button id="closeModal" class="close-btn">&times;</button>
+            <div class="iframe-container">
+                <iframe id="videoPlayer" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Context Menu for Video Cards -->
+    <div id="customContextMenu" class="context-menu hidden">
+        <div class="menu-item" id="menuSyncWatch">📺 新增至同步觀看</div>
+        <div class="menu-item" id="menuRemoveFav">❌ 取消我的最愛</div>
+        <div class="menu-item" id="menuPlayMissavNormal" style="color: #60a5fa;">🦊 觀看 MissAV 一般版</div>
+        <div class="menu-item" id="menuPlayMissavLeaked" style="color: #f472b6;">🌶️ 觀看 MissAV 無碼破解</div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">已加入同步觀看</div>
+
+    <!-- Floating Restore UI Button for Stealth Mode -->
+    <button id="restoreUiBtn" class="glass hidden" style="position: fixed; bottom: 15px; left: 15px; z-index: 9999; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; color: #4ade80; background: rgba(0,0,0,0.6); border: 1px solid rgba(74, 222, 128, 0.4); cursor: pointer; backdrop-filter: blur(10px); transition: all 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">🖥️ 顯示 UI (Esc)</button>
+
+    <script src="script.js?v=1.2.0"></script>
+</body>
+</html>
