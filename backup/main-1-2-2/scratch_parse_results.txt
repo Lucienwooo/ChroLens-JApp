@@ -1,0 +1,55 @@
+=== Analyzing javhdporn.html ===
+Common div classes: [('post-thumbnail', 28), ('inner-border', 28), ('post-thumbnail-container video-with-trailer', 21), ('video-debounce-bar', 21), ('video-preview', 20), ('clear', 9), ('post-thumbnail-container  video-with-thumbs', 7), ('videos-list', 4), ('site-branding row', 1), ('logo', 1)]
+Total <article> elements: 28
+--- Article 0 snippet ---
+<article id="post-807462" data-video-uid="1" data-post-id="807462" class="thumb-block full-width loop-video">
+	<a class="archive-entry" href="https://www.javhdporn.net/zh/video/aqula-127/" title="AQULA-127 [VR] 帶來極致的 VR 體驗，讓您盡情欣賞小野坂由香完美、強壯、美">
+	<div class="post-thumbnail">
+		
+				
+					<div class="post-thumbnail-container video-with-trailer">
+					<div class="video-debounce-bar"></div>
+					<div class="video-preview" data-mediabook="https://n19s.1024cdn.sx/censored/428901_AQULA-127.mp4" style="width: 304.5px; height: 171.281px;"></div>
+				<div class="inner-border"><img class="video-img loaded entered lazyloaded" alt="AQULA-127 [VR] 帶來極致的 VR 體驗，讓您盡情欣賞小野坂由香完美、強壯、美" src="https://pics.pornfhd.com/s/digital/video/aqula00127/aqula00127pl.jpg" onerror="img_onerror(this);" data-wpsrc="https://i3.wp.com/pics.dmm.co.jp/digital/video/aqula00127/aqula00127pl.jpg" data-notsrc="https://pics.pornfhd.com/404.jpeg" data-lazy-src="https://pics.pornfhd.com/s/digital/video/aqula00127/aqula00127pl.jpg" data-ll-status="loaded" style="width: 304.5px; height: 171.281px;"><noscript><img class="video-img loaded" alt="AQULA-127 [VR] 帶來極致的 VR 體驗，讓您盡情欣賞小野坂由香完美、強壯、美" src="https://pics.pornfhd.com/s/digital/video/aqula00127/aqula00127pl.jpg"   onerror="img_onerror(this);" data-wpsrc="https://i3.wp.com/pics.dmm.co.jp/digital/video/aqula00127/aqula00127pl.jpg" data-notsrc="https://pics.pornfhd.com/404.jpeg"></noscript></div>			</div>
+				
+		
+		<span class="views"><i class="fa fa-eye"></i> 15</span>		<span c
+----------------------------
+--- Article 1 snippet ---
+<article id="native-banner-ad-1" class="thumb-block full-width loop-video thumb-block-native-ad"><div class="post-thumbnail"><div class="post-thumbnail-container video-with-trailer"><div class="video-debounce-bar"></div><div class="inner-border"><iframe data-asg-handled="asg-259953-dVz9hv" src="https://creative.mavrtracktor.com/widgets/v4/Universal?campaignId=native&amp;userId=a857d671ed2ee3f67e327d7a3d55455ceef35f57922f8f8f71c52e413accec69&amp;targetDomain=javhdporn.live&amp;tag=girls&amp;responsive=0&amp;hideButton=1&amp;hideTitle=1&amp;gridColumns=1&amp;gridRows=1&amp;thumbsMargin=0" frameborder="no" marginheight="0" marginwidth="0" style="display:block;position:relative;z-index:1" height="100%" width="100%"></iframe></div></div><span class="views"><i class="fa fa-eye"></i>9999</span><span class="duration"><i class="fa fa-clock-o"></i>02:00:00</span></div><header class="entry-header"><span>免費成人線上直播</span></header></article>
+----------------------------
+--- Article 2 snippet ---
+<article id="post-807461" data-video-uid="2" data-post-id="807461" class="thumb-block full-width loop-video">
+	<a class="archive-entry" href="https://www.javhdporn.net/zh/video/aqube-066/" title="AQUBE-066 [VR] 和醉酒女友在家甜蜜又溫馨的飲酒性愛 – 淺見渚">
+	<div class="post-thumbnail">
+		
+				
+					<div class="post-thumbnail-container video-with-trailer">
+					<div class="video-debounce-bar"></div>
+					<div class="video-preview" data-mediabook="https://n19s.1024cdn.sx/censored/428902_AQUBE-066.mp4" style="width: 304.5px; height: 171.281px;"></div>
+				<div class="inner-border"><img class="video-img loaded entered lazyloaded" alt="AQUBE-066 [VR] 和醉酒女友在家甜蜜又溫馨的飲酒性愛 – 淺見渚" src="https://pics.pornfhd.com/s/digital/video/aqube00066/aqube00066pl.jpg" onerror="img_onerror(this);" data-wpsrc="https://i1.wp.com/pics.dmm.co.jp/digital/video/aqube00066/aqube00066pl.jpg" data-notsrc="https://pics.pornfhd.com/404.jpeg" data-lazy-src="https://pics.pornfhd.com/s/digital/video/aqube00066/aqube00066pl.jpg" data-ll-status="loaded" style="width: 304.5px; height: 171.281px;"><noscript><img class="video-img loaded" alt="AQUBE-066 [VR] 和醉酒女友在家甜蜜又溫馨的飲酒性愛 &#8211; 淺見渚" src="https://pics.pornfhd.com/s/digital/video/aqube00066/aqube00066pl.jpg"   onerror="img_onerror(this);" data-wpsrc="https://i1.wp.com/pics.dmm.co.jp/digital/video/aqube00066/aqube00066pl.jpg" data-notsrc="https://pics.pornfhd.com/404.jpeg"></noscript></div>			</div>
+				
+		
+		<span class="views"><i class="fa fa-eye"></i> 22</span>		<span class="duration"
+----------------------------
+
+=== Analyzing supjav.html ===
+Common div classes: [('post', 24), ('con', 24), ('meta', 24), ('container', 3), ('container clearfix', 1), ('top clearfix', 1), ('main', 1), ('movv-ad ad_2_1', 1), ('content', 1), ('archive-title', 1)]
+Post-like divs: 25
+Total <article> elements in supjav: 0
+
+=== Analyzing jable_search.html ===
+Total links: 12
+SNOS-058 occurrences in Jable:
+  Match: ="#icon-search"></use></svg> 								</label> 								<input id="inputSearch" class="h-100 fs-3" name="q" placeholder="搜尋.." value="SNOS 058"> 							</form> 						</div> 						<!-- 						<div class="lang"> 							<a href="https://jp.jable.tv/search/SNOS-058/"> 								<img src="https://assets-cdn.jable.tv/assets/images/flag/zh.svg" width="22" height="22"> 							</a> 						</div> 						--> 						<div class="lang"> 							<a href="#" data-toggle="dropdown"> 								<img src="https://assets-cdn.jable.tv/
+  ------------------------------
+  Match: ="container"> 		<section class="pb-3 pb-e-lg-40"> 			 	<div class="row gutter-20"> 		 							<div class="col-6 col-sm-4 col-lg-3"> 								<div class="video-img-box mb-e-20"> 					<div class="img-box cover-md"> 						<a href="https://jable.tv/videos/snos-058/"> 							<img class=" lazyloaded" src="https://assets-cdn.jable.tv/contents/videos_screenshots/56000/56552/320x180/1.jpg" data-src="https://assets-cdn.jable.tv/contents/videos_screenshots/56000/56552/320x180/1.jpg" data-preview="https://assets-cdn.
+  ------------------------------
+  Match: n> 																			</div> 																						<div class="absolute-bottom-right"> 								<span class="label">1:57:23</span> 							</div> 						</a> 					</div> 					<div class="detail"> 						<h6 class="title"><a href="https://jable.tv/videos/snos-058/">SNOS-058 繩子纏住卡住不能動。可以隨心所欲玩弄白皙L罩杯巨乳的奇蹟幸運色色情景 鷲尾芽衣</a></h6> 						<p class="sub-title"> 							<svg class="mr-1" height="15" width="15"><use xlink:href="#icon-eye"></use></svg>627 182 							<svg class="ml-3 mr-1" height="13" width="13"><use xlink:h
+  ------------------------------
+  Match: </div> 																						<div class="absolute-bottom-right"> 								<span class="label">1:57:23</span> 							</div> 						</a> 					</div> 					<div class="detail"> 						<h6 class="title"><a href="https://jable.tv/videos/snos-058/">SNOS-058 繩子纏住卡住不能動。可以隨心所欲玩弄白皙L罩杯巨乳的奇蹟幸運色色情景 鷲尾芽衣</a></h6> 						<p class="sub-title"> 							<svg class="mr-1" height="15" width="15"><use xlink:href="#icon-eye"></use></svg>627 182 							<svg class="ml-3 mr-1" height="13" width="13"><use xlink:href="#icon-
+  ------------------------------
+  Match: pt> 	 <div id="asg-ZLunDXxKQOiw-ab-detector" style="display: none;"></div><script type="text/javascript" src="https://a.labadena.com/api/users/262182?host=jable.tv&amp;ev=232&amp;wh=720&amp;ww=1280&amp;uuid=&amp;url=https%3A%2F%2Fjable.tv%2Fsearch%2FSNOS-058%2F&amp;sid=9e485cee-8633-40d2-bdf9-152ea27b3041&amp;kw=%E9%AB%98%E6%B8%85AV%2C%E5%85%8D%E8%B2%BBAV%2CJAV%E7%B7%9A%E4%B8%8A%E7%9C%8B%2C%E5%85%8D%E8%B2%BBJAV%2C%E6%89%8B%E6%A9%9FAV&amp;url=https%3A%2F%2Fjable.tv%2Fsearch%2FSNOS-058%2F"></script><style
+  ------------------------------
+  Match: jable.tv%2Fsearch%2FSNOS-058%2F&amp;sid=9e485cee-8633-40d2-bdf9-152ea27b3041&amp;kw=%E9%AB%98%E6%B8%85AV%2C%E5%85%8D%E8%B2%BBAV%2CJAV%E7%B7%9A%E4%B8%8A%E7%9C%8B%2C%E5%85%8D%E8%B2%BBJAV%2C%E6%89%8B%E6%A9%9FAV&amp;url=https%3A%2F%2Fjable.tv%2Fsearch%2FSNOS-058%2F"></script><style id="asg-interstitial-styles">       .asg-interstitial {         position: absolute;         top: 0;         left: 0;         width: 100vw;         height: 100vh;         z-index: 2147483647;         display: none;       }       .
+  ------------------------------

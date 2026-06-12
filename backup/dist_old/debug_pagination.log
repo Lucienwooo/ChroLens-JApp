@@ -1,0 +1,20 @@
+
+--- TKTube Request: 2026-06-09 23:02:30 ---
+Incoming URL: https://tktube.com/zh/latest-updates/
+Parsed Page: 1
+Formatted Base URL: https://tktube.com/zh/latest-updates/
+Target URL: https://tktube.com/zh/latest-updates/
+Fetch HTML Success: True (Length: 61340)
+Parsed Videos Count: 24
+Returned Current Page: 1
+Returned Total Pages: 13950
+
+--- TKTube Request: 2026-06-09 23:02:41 ---
+Incoming URL: https://tktube.com/zh/latest-updates/2/
+Parsed Page: 2
+Formatted Base URL: https://tktube.com/zh/latest-updates/
+Target URL: https://tktube.com/zh/latest-updates/2/
+Fetch HTML Success: True (Length: 61625)
+Parsed Videos Count: 24
+Returned Current Page: 2
+Returned Total Pages: 13950

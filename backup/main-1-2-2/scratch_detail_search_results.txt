@@ -1,0 +1,89 @@
+=== Search in scratch_javhdporn_detail.html ===
+Found 26 script blocks.
+  Script block 0 (len 367) matches keywords:
+
+function img_onerror(img) {
+  $.ajax({
+    url: img.dataset.wpsrc,
+    type: 'HEAD',
+    success: function () {
+        //if success place alternate image url into image
+        img.src = img.dataset.wpsrc;
+    },
+    error: function () {
+        //if error place notfound image url into image
+        img.src=img.dataset.notsrc;
+    }
+  });
+  img.onerror = null;
+}
+
+  -----------------------------------
+  Script block 2 (len 153) matches keywords:
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1N46ZBVB4W');
+
+  -----------------------------------
+  Script block 3 (len 2954) matches keywords:
+{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://www.javhdporn.net/zh/video/aqula-127/#article","isPartOf":{"@id":"https://www.javhdporn.net/zh/video/aqula-127/"},"author":{"name":"","@id":""},"headline":"AQULA-127 [VR] 帶來極致的 VR 體驗，讓您盡情欣賞小野坂由香完美、強壯、美","datePublished":"2026-06-09T03:32:00+00:00","mainEntityOfPage":{"@id":"https://www.javhdporn.net/zh/video/aqula-127/"},"wordCount":24,"publisher":{"@id":"https://www.javhdporn.net/#organization"},"keywords":["8KVR","Beautiful Girl","Breasts","High-Quality VR","Leg Fetish","Lotion","Solowork","Vr"],"articleSection":["Censored"],"inLanguage":"zh-Hans"},{"@type":"VideoObject","@id":"https://www.javhdporn.net/zh/video/aqula-127/","url":"https://www.javhdporn.net/zh/video/aqula-127/","name":"AQULA-127 [VR] 帶來極致的 VR 體驗，讓
+  -----------------------------------
+  Script block 11 (len 384) matches keywords:
+
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/zh/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/kingtube/*","/zh/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+
+  -----------------------------------
+  Script block 13 (len 290) matches keywords:
+
+var wpst_ajax_var = {"url":"https://www.javhdporn.net/wp-admin/admin-ajax.php","nonce":"ed88ffef5f","ctpl_installed":"","ajax_post_views_url":"https://www.javhdporn.net/wp-content/themes/kingtube/ajax-view.php"};
+var options = {"thumbnails_ratio":"16/9"};
+//# sourceURL=wpst-main-js-extra
+
+  -----------------------------------
+  Script block 17 (len 1816) matches keywords:
+window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.Mutatio
+  -----------------------------------
+  Script block 21 (len 902) matches keywords:
+(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a095aba6c864ce49',t:'MTc4MTA2NjEzOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadysta
+  -----------------------------------
+Found 17 player-like divs:
+  <div class="video-player-area with-sidebar-ads" id="video-player-area" data-video-id="807462">
+  <div class="video-player" id="video-player" data-mpu="/CW8Qk0EdI8w7YwNatZy8s+vd0eumQPyjFRzB8f2m9ZwHN4cXuANg43Rb+yd2LIqtWuEdldyf4FcxvSve+thkp3uymOr63THrOAOw1DTWBFRPVT8KDZlrJkqsZu9RcHzLUtGK4rT0MhsJmgcT/xiVLFGw0kcUBy5PYDnh+a4z/GOSZG01DQc9PydbMhz2K+6mX3Ov1kljb1/wkLqE0yMKdz9hBAlBBx/Rj10J3Cd7x67xkyjAdgMAc614OWHLLodkJ1Gz7pRCwAVvLIKMCra7j4z/pJtT2IJFbGt10PR6WsVMmrmYbWP1NAEfoDygZTWfCWJDaANS7GfwaUm3F2Ubw==" data-ver="2">
+  <div class="video-player-area with-sidebar-ads" id="video-player-area" data-video-id="807462">
+  <div class="video-player" id="video-player" data-mpu="/CW8Qk0EdI8w7YwNatZy8s+vd0eumQPyjFRzB8f2m9ZwHN4cXuANg43Rb+yd2LIqtWuEdldyf4FcxvSve+thkp3uymOr63THrOAOw1DTWBFRPVT8KDZlrJkqsZu9RcHzLUtGK4rT0MhsJmgcT/xiVLFGw0kcUBy5PYDnh+a4z/GOSZG01DQc9PydbMhz2K+6mX3Ov1kljb1/wkLqE0yMKdz9hBAlBBx/Rj10J3Cd7x67xkyjAdgMAc614OWHLLodkJ1Gz7pRCwAVvLIKMCra7j4z/pJtT2IJFbGt10PR6WsVMmrmYbWP1NAEfoDygZTWfCWJDaANS7GfwaUm3F2Ubw==" data-ver="2">
+  <div class="responsive-player">
+  <div class="under-player-ad-mobile">
+  <div class="video-player-area with-sidebar-ads" id="video-player-area" data-video-id="807462">
+  <div class="video-player" id="video-player" data-mpu="/CW8Qk0EdI8w7YwNatZy8s+vd0eumQPyjFRzB8f2m9ZwHN4cXuANg43Rb+yd2LIqtWuEdldyf4FcxvSve+thkp3uymOr63THrOAOw1DTWBFRPVT8KDZlrJkqsZu9RcHzLUtGK4rT0MhsJmgcT/xiVLFGw0kcUBy5PYDnh+a4z/GOSZG01DQc9PydbMhz2K+6mX3Ov1kljb1/wkLqE0yMKdz9hBAlBBx/Rj10J3Cd7x67xkyjAdgMAc614OWHLLodkJ1Gz7pRCwAVvLIKMCra7j4z/pJtT2IJFbGt10PR6WsVMmrmYbWP1NAEfoDygZTWfCWJDaANS7GfwaUm3F2Ubw==" data-ver="2">
+  <div class="video-infos" id="video-infos" data-blk="/AG0C0p8d+4r+d0KWLNE9vq9BG+4lRDqtXFeC+n3x/RAJ8ofR5d2oYXRa9e1hJsuhGi9F2RxBMRhmPuwQ9NL56ma9ySa6XDZtuNf3Gf8BVRTFT+bHCltoahizrqTLa7NJk40Y6WJ4c8=">
+  <div id="video-date">
+=== Search in scratch_supjav_detail.html ===
+Found 24 script blocks.
+  Script block 3 (len 93) matches keywords:
+window._SJT = {uri: 'https://supjav.com/wp-content/themes/supjav2', url:'https://supjav.com'}
+  -----------------------------------
+  Script block 5 (len 153) matches keywords:
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZQCDRMKQTF');
+
+  -----------------------------------
+  Script block 9 (len 537) matches keywords:
+pcmload.load('PGRpdiBjbGFzcz0ibW92di1hZCBtX2FkXzNfMSIgc3R5bGU9Im1hcmdpbi10b3A6MjBweDsgbWFyZ2luLWJvdHRvbToyMHB4OyAiPjxpZnJhbWUgd2lkdGg9IjMwMHB4IiBoZWlnaHQ9IjEwMHB4IiBzdHlsZT0iZGlzcGxheTpibG9jayIgbWFyZ2luV2lkdGg9IjAiIG1hcmdpbkhlaWdodD0iMCIgZnJhbWVCb3JkZXI9Im5vIiBzcmM9Imh0dHBzOi8vZ28uYmx1ZXRyYWZmaWNzdHJlYW0uY29tL3NtYXJ0cG9wL2E0ZTQzMGQ4NTg0ZmI3ZGY4MjU4ODljNTZiNDIwODIyYjY0ZWQ3ZjllYTM2ZTBlYTM1NmJlOThmMGI1ZDEwNmQ/dXNlcklkPTRjYmE0ZGVjZGU4Yzk0MDQxZTMwMDIwNGViODBmNTBhNGNjNDMzNTQ2NGQ2NzFhOWNlZWMzNDc0NWY2MDQxZDciPjwvaWZyYW1lPjwvZGl2Pg==','m');
+  -----------------------------------
+  Script block 15 (len 2298) matches keywords:
+pcmload.load('PGRpdiBjbGFzcz0ibW92di1hZCBhZF8zXzQiID48bWV0YSBjaGFyc2V0PSJVVEYtOCI+DQo8c3R5bGU+DQogIC5hZC1iYW5uZXItc3RyaXAgew0KICAgIGRpc3BsYXk6IGZsZXg7DQogICAgYWxpZ24taXRlbXM6IGNlbnRlcjsNCiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjsNCiAgICBnYXA6IDEwcHg7DQogICAgcGFkZGluZzogMTBweDsNCiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoMTgwZGVnLCAjZDQyYTJhLCAjYjAxZTFlKTsNCiAgICBjb2xvcjogI2ZmZjsNCiAgICBmb250LWZhbWlseTogIkFwcGxlIENvbG9yIEVtb2ppIiwgIlNlZ29lIFVJIEVtb2ppIiwgc3lzdGVtLXVpLCBzYW5zLXNlcmlmOw0KICAgIHdpZHRoOiAxMDAlOw0KICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7DQogIH0NCiAgLmFkLWxhYmVsIHsNCiAgICBiYWNrZ3JvdW5kOiByZ2JhKDAsMCwwLDAuMyk7DQogICAgZm9udC1zaXplOiAxMHB4Ow0KICAgIHBhZGRpbmc6IDJweCA0cHg7DQogICAgYm9yZGVyLXJhZGl1czogM3B4Ow0KICAgIGZvbnQtd2VpZ2h0OiBib2xkOw0KICB9DQogIC5iYW5uZXItdGV4dCB7IGZvbnQtd2VpZ2h0OiA3MDA7IG
+  -----------------------------------
+  Script block 21 (len 902) matches keywords:
+(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a095ac185dc0a033',t:'MTc4MTA2NjE1Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadysta
+  -----------------------------------
+Found 3 player-like divs:
+  <div id="player-wrap" class="player-wrap" style="background-image: url(https://img.supjav.com/images/2026/06/FC2PPV-4917853.jpg);">
+  <div id="player-wrap" class="player-wrap" style="background-image: url(https://img.supjav.com/images/2026/06/FC2PPV-4917853.jpg);">
+  <div id="dz_video">
